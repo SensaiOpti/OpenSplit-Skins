@@ -1,0 +1,27 @@
+@layer skins {
+    #timer-container {
+        padding: 10px;
+        background-color: #141943;
+        background-image: url("./images/samusrunning.gif");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: left center;
+    }
+
+    #time-container {
+        font-family: var(--split-comparison-font-family), sans-serif;
+        font-size: 50px;
+    }
+
+    .timer-ahead {
+        color: greenyellow;
+    }
+
+    .timer-behind {
+        color: #f83800;
+    }
+
+    .timer-gold {
+        color: gold;
+    }
+}

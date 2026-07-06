@@ -1,0 +1,84 @@
+@layer skins {
+    #splitter {
+        flex-direction: var(--splitlist-direction);
+    }
+
+    #splitList {
+        flex-direction: var(--splitlist-direction);
+        font-family: var(--split-comparison-font-family), sans-serif;
+    }
+
+    #gameInfo {
+        position: relative;
+        background: var(--color-primary);
+        text-align: var(--gameinfo-text-align);
+        font-family: var(--split-comparison-font-family), sans-serif;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        }
+    }
+
+    #gameTitle {
+        font-size: var(--gameinfo-title-size);
+        font-weight: var(--gameinfo-title-font-weight);
+        font-family: var(--split-comparison-font-family), sans-serif;
+    }
+
+    #gameCategory {
+        margin: var(--gameinfo-category-margin);
+        padding-bottom: var(--gameinfo-category-bottom-space);
+        font-size: var(--gameinfo-category-font-size);
+        font-weight: var(--gameinfo-category-font-weight);
+    }
+
+    #splitBody {
+        flex-direction: var(--splitlist-direction);
+    }
+
+    #finalSegment {
+        background: var(--color-primary);
+    }
+
+    #splitList table tr.selected {
+        background: var(--active-segment-background);
+        color: var(--active-segment-text-color);
+    }
+
+    #splitList table td {
+        border: var(--segment-border);
+        border-left: 0;
+        border-right: 0;
+        padding: var(--segment-padding);
+    }
+
+    #splitName {
+        width: var(--segment-name-width);
+    }
+
+    #attempts {
+        position: absolute;
+        top: 50px;
+        left: 320px;
+    }
+
+    .splitDelta {
+        text-align: var(--split-delta-text-align);
+        font-family: var(--split-delta-font-family), monospace;
+    }
+
+    .splitComparison {
+        text-align: var(--split-comparison-text-align);
+        font-family: var(--split-comparison-font-family), monospace;
+    }
+
+    .comparison-mode {
+        background-color: #050b07;
+        font-family: var(--split-comparison-font-family), monospace;
+        opacity: 1;
+    }
+
+
+    button.collapseToggle {
+        margin-right: 6px;
+    }
+}

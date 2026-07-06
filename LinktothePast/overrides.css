@@ -1,0 +1,53 @@
+@layer overrides {
+    :root {
+        /* Global skin background: very dark night-over-Hyrule green */
+        --app-background-color: #050b07;
+        --app-foreground-color: #f7f3c6;
+    }
+
+    /* Splitter frame styling */
+    #splitter {
+        background: radial-gradient(
+            circle at top,
+            #101810 0%,
+            #050b07 55%,
+            #000000 100%
+        );
+    }
+
+    #splitList table {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+    }
+
+    #splitList table tr:nth-child(even):not(.selected) td {
+        background-color: rgba(10, 26, 16, 0.9);
+    }
+
+    #splitList table tr:nth-child(odd):not(.selected) td {
+        background-color: rgba(6, 18, 10, 0.9);
+    }
+
+    /* When the timer is showing a gold split, play tri2.gif in the title area */
+    /* I unfortunately don't know how to get this to then disappear, which is a shame. */
+    /* Or even to fire only if the most recent split was gold. Help! */
+    body:has(.timer-gold) #gameInfo {
+        background-image: url("./images/tri2.gif"), var(--color-primary);
+        background-size: cover, cover;
+        background-position: center, center;
+        background-repeat: no-repeat, no-repeat;
+    }
+
+    @keyframes triforce-title-pulse {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.02);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+}
