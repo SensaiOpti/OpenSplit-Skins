@@ -56,9 +56,11 @@
     }
 
     #attempts {
-        position: absolute;
-        top: 50px;
-        left: 320px;
+        position: relative;
+        top: -1.2em; /* move up next to the category */
+        margin-left: 22em;
+        display: inline-block;
+        white-space: nowrap;
     }
 
     .splitDelta {
