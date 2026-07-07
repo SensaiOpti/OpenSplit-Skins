@@ -29,6 +29,8 @@
         padding-bottom: var(--gameinfo-category-bottom-space);
         font-size: var(--gameinfo-category-font-size);
         font-weight: var(--gameinfo-category-font-weight);
+        position: relative;
+        right: 131px;
     }
 
     #splitBody {
@@ -51,16 +53,21 @@
         padding: var(--segment-padding);
     }
 
-    #splitName {
+    .splitName {
         width: var(--segment-name-width);
     }
 
+    /* Something about the 'width' attribute makes it so these attempts must be manually moved */
+    /* when you expand the window; everything else grows/shrinks with the window. */
+
     #attempts {
+        font-size: var(--gameinfo-category-font-size);
+        font-weight: var(--gameinfo-category-font-weight);
         position: relative;
+        padding: 2px 0px;
+        left: 0px;
         top: -1.2em; /* move up next to the category */
-        margin-left: 22em;
-        display: inline-block;
-        white-space: nowrap;
+        text-align: right;
     }
 
     .splitDelta {

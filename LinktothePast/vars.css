@@ -8,7 +8,8 @@
         --splitlist-direction: column;
 
         /* game information section */
-        --gameinfo-text-align: left;
+        --gameinfo-text-align: center;
+        --category-text-align: left;
         --gameinfo-title-size: 18px;
         --gameinfo-title-font-weight: normal;
         --gameinfo-category-margin: 0;

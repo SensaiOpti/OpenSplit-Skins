@@ -62,14 +62,12 @@
         padding: var(--segment-padding);
     }
 
-    #splitName {
+    .splitName {
         width: var(--segment-name-width);
     }
 
     #attempts {
-        position: relative;
-        top: 0px;
-        left: 0px;
+        position: static;
     }
 
     .splitDelta {
