@@ -1,11 +1,4 @@
 @layer skins {
-    #splitter {
-        flex-direction: var(--splitlist-direction);
-    }
-
-    #splitList {
-        flex-direction: var(--splitlist-direction);
-    }
 
     #gameInfo {
         position: relative;
@@ -30,16 +23,12 @@
         font-weight: var(--gameinfo-category-font-weight);
     }
 
-    #splitBody {
-        flex-direction: var(--splitlist-direction);
-    }
-
     #splitContainer {
-        font-family: var(--split-delta-font-family), monospace;
         background-image: url("./images/pastelbackgroundedit.jpg");
-        background-size: 100%;
         background-repeat: no-repeat;
         background-position: 25% 25%;
+        background-size: cover;
+        font-family: var(--split-delta-font-family), monospace;
     }
 
     #finalSegment {
@@ -53,10 +42,10 @@
     }
 
     #splitList table td {
+        padding: var(--segment-padding);
         border: var(--segment-border);
         border-left: 0;
         border-right: 0;
-        padding: var(--segment-padding);
         color: var(--inactive-segment-text-color);
         text-shadow:
             1px 1px 0 #1a163e,
@@ -64,26 +53,12 @@
             2px 2px 2px #1a163e;
     }
 
-    .splitName {
-        width: var(--segment-name-width);
-    }
-
-    .splitDelta {
-        text-align: var(--split-delta-text-align);
-        font-family: var(--split-delta-font-family), monospace;
-    }
-
-    .splitComparison {
-        text-align: var(--split-comparison-text-align);
-        font-family: var(--split-comparison-font-family), monospace;
-    }
-
     #attempts {
         position: relative;
         top: -1.6em; /* move up next to the category */
         margin-left: 10.5em;
         display: inline-block;
-        white-space: nowrap;
+        text-align: center;
     }
 
     .comparison-mode {
@@ -96,7 +71,11 @@
         margin-left: 0.3em;
     }
 
-    button.collapseToggle {
-        margin-right: 6px;
+    .splitDelta {
+        font-family: var(--split-delta-font-family), monospace;
+    }
+
+    .splitComparison {
+        font-family: var(--split-comparison-font-family), monospace;
     }
 }

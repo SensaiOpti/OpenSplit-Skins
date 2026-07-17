@@ -1,18 +1,10 @@
 @layer skins {
-    #splitter {
-        flex-direction: var(--splitlist-direction);
-    }
-
-    #splitList {
-        flex-direction: var(--splitlist-direction);
-    }
-
     #gameInfo {
         position: relative;
         background-image: url("./images/metroid.gif"), var(--color-primary);
         background-size:
-            20% auto,
-            100% 100%;
+        20% auto,
+        100% 100%;
         background-position: 95%, center;
         background-repeat: no-repeat;
         text-align: var(--gameinfo-text-align);
@@ -33,15 +25,11 @@
         font-weight: var(--gameinfo-category-font-weight);
     }
 
-    #splitBody {
-        flex-direction: var(--splitlist-direction);
-    }
-
     #splitContainer {
         background-image: url("./images/metroidback.png");
-        background-size: 200%;
         background-repeat: no-repeat;
         background-position: center bottom;
+        background-size: 200%;
         font-family: var(--split-comparison-font-family), sans-serif;
     }
 
@@ -62,10 +50,6 @@
         padding: var(--segment-padding);
     }
 
-    .splitName {
-        width: var(--segment-name-width);
-    }
-
     #attempts {
         position: static;
     }
@@ -80,17 +64,10 @@
         font-family: var(--split-comparison-font-family), monospace;
     }
 
-/* This is for nested splits only. I'm going to leave this here, but it's just if you want to use nested splits.
-
-button.collapseToggle {
-        margin-right: 6px;
-    }
-
-*/
-
     .comparison-mode {
         background-color: #141943;
         font-family: var(--split-comparison-font-family), monospace;
         opacity: 1;
     }
+
 }

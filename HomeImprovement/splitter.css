@@ -1,12 +1,4 @@
 @layer skins {
-    #splitter {
-        flex-direction: var(--splitlist-direction);
-    }
-
-    #splitList {
-        flex-direction: var(--splitlist-direction);
-    }
-
     #gameInfo {
         position: relative;
         background-image:
@@ -29,19 +21,16 @@
     #gameCategory {
         margin: var(--gameinfo-category-margin);
         padding-bottom: var(--gameinfo-category-bottom-space);
+
         font-size: var(--gameinfo-category-font-size);
         font-weight: var(--gameinfo-category-font-weight);
     }
 
-    #splitBody {
-        flex-direction: var(--splitlist-direction);
-    }
-
     #splitContainer {
         background-image: url("./images/jinxtool.png");
-        background-size: 100%;
         background-repeat: no-repeat;
         background-position: center;
+        background-size: cover;
     }
 
     #finalSegment {
@@ -55,25 +44,20 @@
 
     #splitList table td {
         border: var(--segment-border);
+        padding: var(--segment-padding);
         border-left: 0;
         border-right: 0;
-        padding: var(--segment-padding);
     }
 
     #attempts {
         position: static;
-        top: 0px;
+        right: auto;
         font-size: 14px;
         font-weight: var(--gameinfo-category-font-weight);
     }
 
-
-    .splitName {
-        width: var(--segment-name-width);
-    }
-
     .comparison-mode {
-        display: none;
+        display: relative;
     }
 
     .splitDelta {
@@ -88,5 +72,7 @@
 
     button.collapseToggle {
         margin-right: 6px;
+        background-color: #282828;
     }
+
 }
