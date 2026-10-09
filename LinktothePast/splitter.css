@@ -1,32 +1,11 @@
 @layer skins {
+    /*
+     * ============================================================
+     * Split list
+     * ============================================================
+     */
     #splitList {
         font-family: var(--split-comparison-font-family), sans-serif;
-    }
-
-    #gameInfo {
-        position: relative;
-        background: var(--color-primary);
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        text-align: var(--gameinfo-text-align);
-        font-family: var(--split-comparison-font-family), sans-serif;
-    }
-
-    #gameTitle {
-        font-family: var(--split-comparison-font-family), sans-serif;
-        font-size: var(--gameinfo-title-size);
-        font-weight: var(--gameinfo-title-font-weight);
-    }
-
-    #gameCategory {
-        margin: var(--gameinfo-category-margin);
-        padding-bottom: var(--gameinfo-category-bottom-space);
-        font-size: var(--gameinfo-category-font-size);
-        font-weight: var(--gameinfo-category-font-weight);
-    }
-
-    #finalSegment {
-        background: var(--color-primary);
     }
 
     #splitList table tr.selected {
@@ -34,27 +13,37 @@
         color: var(--active-segment-text-color);
     }
 
+    /*
+     * Segment body styling belongs to the split list.
+     *
+     * This remains compatible with both layouts:
+     * - vertical: each row is a segment
+     * - horizontal: each row becomes a segment column
+     */
     #splitList table td {
-        border: var(--segment-border);
+        border-top: var(--segment-border);
+        border-bottom: var(--segment-border);
+
         padding: var(--segment-padding);
-        border-left: 0;
+        box-sizing: border-box;
+    }
+
+    #splitter[data-layout="horizontal"] #splitContainer table tr {
+        box-sizing: border-box;
+    }
+
+    #splitter[data-layout="horizontal"] #splitContainer table td {
+        border-top: 0;
         border-right: 0;
+        border-bottom: var(--segment-border);
+        border-left: 0;
     }
 
-    #attempts {
-        font-size: var(--gameinfo-category-font-size);
-        font-weight: var(--gameinfo-category-font-weight);
-        position: relative;
-        padding: 2px 0px;
-        left: -0.3em;
-        top: -1.2em; /* move up next to the category */
-        text-align: right;
-    }
-
-    .comparison-mode {
-        background: #050b07;
-        font-family: var(--split-comparison-font-family), monospace;
-        opacity: 1;
+    #splitter[data-layout="horizontal"] #finalSegment table td {
+        border-top: 0;
+        border-right: 0;
+        border-bottom: var(--segment-border);
+        border-left: 0;
     }
 
     .splitDelta {
@@ -63,5 +52,137 @@
 
     .splitComparison {
         font-family: var(--split-comparison-font-family), monospace;
+    }
+
+    /*
+     * ============================================================
+     * Game information
+     * ============================================================
+     */
+    #gameInfo {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr auto auto 1fr;
+
+        background: var(--color-primary);
+
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+
+        text-align: var(--gameinfo-text-align);
+
+        font-family: var(--split-comparison-font-family), sans-serif;
+    }
+
+    #gameTitle {
+        grid-column: 1 / -1;
+        font-family: var(--split-comparison-font-family), sans-serif;
+        font-size: var(--gameinfo-title-size);
+        font-weight: var(--gameinfo-title-font-weight);
+    }
+
+    #gameCategory {
+        grid-column: 2;
+        grid-row: 2;
+        justify-self: end;
+        align-self: baseline;
+        margin: var(--gameinfo-category-margin);
+        padding-bottom: var(--gameinfo-category-bottom-space);
+
+        font-size: var(--gameinfo-category-font-size);
+        font-weight: var(--gameinfo-category-font-weight);
+    }
+
+    #attempts {
+        position: static;
+        grid-column: 3;
+        grid-row: 2;
+        justify-self: start;
+        align-self: baseline;
+
+        font-size: var(--gameinfo-category-font-size);
+        font-weight: var(--gameinfo-category-font-weight);
+
+        padding: 0 0 0 8px;
+
+        width: max-content;
+        text-align: left;
+    }
+
+    .game-variable {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+
+    /*
+     * ============================================================
+     * Final segment
+     * ============================================================
+     */
+    #finalSegment {
+        background: var(--color-primary);
+    }
+
+    /*
+     * ============================================================
+     * Comparison mode
+     * ============================================================
+     */
+    .comparison-mode {
+        background: #050b07;
+
+        font-family: var(--split-comparison-font-family), monospace;
+
+        opacity: 1;
+    }
+
+    /*
+     * ============================================================
+     * Horizontal splitter info
+     * ============================================================
+     */
+
+    /* Match the measured component layout in vertical view. */
+    #splitter[data-layout="vertical"] #splitterInfo {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    /* Keep horizontal splitter info in a single measured grid column. */
+    #splitter[data-layout="horizontal"] #splitterInfo {
+        display: grid;
+        min-width: 0;
+        min-height: 0;
+        box-sizing: border-box;
+    }
+
+    #splitter[data-layout="horizontal"] #splitterInfo #world-record {
+        grid-column: 1;
+        grid-row: 1;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    #splitter[data-layout="horizontal"] #splitterInfo #time-container {
+        grid-column: 1;
+        grid-row: 2;
+        min-width: 0;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    #splitter[data-layout="horizontal"] #splitterInfo .comparison-mode {
+        grid-column: 1;
+        grid-row: 3;
+        min-width: 0;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
     }
 }

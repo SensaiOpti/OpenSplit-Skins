@@ -1,26 +1,53 @@
 @layer skins {
+    /*
+     * ============================================================
+     * Game info
+     * ============================================================
+     */
 
     #gameInfo {
         position: relative;
+        display: grid;
+        grid-template-columns: 1fr auto auto 1fr;
+
         background: var(--color-primary);
+
         text-align: var(--gameinfo-text-align);
         font-family: var(--split-delta-font-family), monospace;
     }
 
     #gameTitle {
+        grid-column: 1 / -1;
         font-family: var(--split-delta-font-family), monospace;
         font-size: var(--gameinfo-title-size);
         font-weight: var(--gameinfo-title-font-weight);
     }
 
     #gameCategory {
-        position: relative;
-        top: -4px;
+        grid-column: 2;
+        grid-row: 2;
+        justify-self: end;
+        align-self: baseline;
+
         margin: var(--gameinfo-category-margin);
         padding-bottom: var(--gameinfo-category-bottom-space);
+
         font-family: var(--split-delta-font-family), monospace;
         font-size: var(--gameinfo-category-font-size);
         font-weight: var(--gameinfo-category-font-weight);
+    }
+
+    /*
+     * ============================================================
+     * Split list
+     * ============================================================
+     */
+
+    #splitList {
+        min-width: 0;
+        min-height: 0;
+
+        font-family: var(--split-delta-font-family), monospace;
     }
 
     #splitContainer {
@@ -28,11 +55,7 @@
         background-repeat: no-repeat;
         background-position: 25% 25%;
         background-size: cover;
-        font-family: var(--split-delta-font-family), monospace;
-    }
 
-    #finalSegment {
-        background: var(--color-primary);
         font-family: var(--split-delta-font-family), monospace;
     }
 
@@ -43,39 +66,239 @@
 
     #splitList table td {
         padding: var(--segment-padding);
-        border: var(--segment-border);
-        border-left: 0;
-        border-right: 0;
+
+        border-top: var(--segment-border);
+        border-bottom: var(--segment-border);
+
         color: var(--inactive-segment-text-color);
+
         text-shadow:
             1px 1px 0 #1a163e,
             1px 1px 1px #1a163e,
             2px 2px 2px #1a163e;
     }
 
-    #attempts {
-        position: relative;
-        top: -1.6em; /* move up next to the category */
-        margin-left: 10.5em;
-        display: inline-block;
-        text-align: center;
+    /*
+     * ============================================================
+     * Horizontal layout
+     * ============================================================
+     *
+     * The base splitter owns the column layout. These rules only
+     * adapt the Hollow Knight skin's appearance to that layout.
+     */
+
+    #splitter[data-layout="horizontal"] #splitList {
+        background: var(--color-primary);
     }
 
-    .comparison-mode {
-        background-color: var(--color-primary);
-        font-family: var(--split-comparison-font-family), monospace;
-        font-size: 12px;
-        opacity: 1;
-        position: absolute;
-        top: 5.7em;
-        margin-left: 0.3em;
+    #splitter[data-layout="horizontal"] #splitContainer {
+        background-image: url("./images/pastelbackgroundedit.jpg");
+        background-repeat: no-repeat;
+        background-position: 25% 25%;
+        background-size: cover;
     }
 
-    .splitDelta {
+    #splitter[data-layout="horizontal"] #splitList table tr {
+        box-sizing: border-box;
+    }
+
+    #splitter[data-layout="horizontal"] #splitList table td {
+        border-top: 0;
+        border-right: 0;
+        border-bottom: var(--segment-border);
+        border-left: 0;
+        padding: var(--segment-padding);
+
+        text-shadow:
+            1px 1px 0 #1a163e,
+            1px 1px 1px #1a163e,
+            2px 2px 2px #1a163e;
+    }
+
+    /* Keep the attempt count alongside the category in horizontal view. */
+    #splitter[data-layout="horizontal"] #gameInfo {
+        display: grid;
+        grid-template-columns:
+            minmax(var(--splitter-game-category-min-width, 50px), 1fr)
+            minmax(var(--splitter-attempts-min-width, 40px), max-content);
+        column-gap: var(--splitter-gameinfo-column-gap, 8px);
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        min-width: calc(
+            var(--splitter-game-category-min-width, 50px) +
+            var(--splitter-attempts-min-width, 40px) +
+            var(--splitter-gameinfo-column-gap, 8px) +
+            var(--splitter-game-info-padding-width, 32px)
+        );
+    }
+
+    #splitter[data-layout="horizontal"] #gameTitle {
+        grid-column: 1 / -1;
+        grid-row: 1;
+    }
+
+    #splitter[data-layout="horizontal"] #gameCategory {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    #splitter[data-layout="horizontal"] #attempts {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .game-variable {
+        grid-column: 1 / -1;
+    }
+
+    #splitter[data-layout="horizontal"] #gameCategory {
+        grid-column: 1;
+        margin: 0;
+    }
+
+    #splitter[data-layout="horizontal"] #attempts {
+        grid-column: 2;
+    }
+
+    /*
+     * ============================================================
+     * Final segment
+     * ============================================================
+     */
+
+    #finalSegment {
+        background: var(--color-primary);
+
         font-family: var(--split-delta-font-family), monospace;
     }
 
-    .splitComparison {
+    #splitter[data-layout="horizontal"] #finalSegment {
+        background: var(--color-primary);
+
+        font-family: var(--split-delta-font-family), monospace;
+    }
+
+    #splitter[data-layout="horizontal"] #finalSegment table td {
+        padding: var(--segment-padding);
+
+        border-top: 0;
+        border-right: 0;
+        border-bottom: var(--segment-border);
+        border-left: 0;
+
+        color: var(--inactive-segment-text-color);
+
+        text-shadow:
+            1px 1px 0 #1a163e,
+            1px 1px 1px #1a163e,
+            2px 2px 2px #1a163e;
+    }
+
+    #splitter[data-layout="horizontal"] #finalSegment .selected {
+        background: var(--active-segment-background);
+        color: var(--active-segment-text-color);
+    }
+
+    /*
+     * ============================================================
+     * Attempts
+     * ============================================================
+     */
+
+    #attempts {
+        position: static;
+        top: auto;
+        right: auto;
+
+        grid-column: 3;
+        grid-row: 2;
+        justify-self: start;
+        align-self: baseline;
+
+        margin: 0;
+        padding: 0 0 0 8px;
+        display: inline-block;
+
+        text-align: left;
+    }
+
+    /*
+     * ============================================================
+     * Comparison
+     * ============================================================
+     */
+
+    .comparison-mode {
+        background-color: var(--color-primary);
+
         font-family: var(--split-comparison-font-family), monospace;
+        font-size: 12px;
+
+        opacity: 1;
+    }
+
+    /*
+     * In horizontal layout the application positions the
+     * comparison panel as a grid area. Do not keep the vertical
+     * absolute positioning there.
+     */
+
+    #splitter[data-layout="horizontal"] .comparison-mode {
+        position: static;
+
+        margin-left: 0;
+
+        font-size: 12px;
+    }
+
+    /*
+     * ============================================================
+     * Horizontal splitter info
+     * ============================================================
+     */
+
+    /* Match the measured component layout in vertical view. */
+    #splitter[data-layout="vertical"] #splitterInfo {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    /* Keep horizontal splitter info in a single measured grid column. */
+    #splitter[data-layout="horizontal"] #splitterInfo {
+        display: grid;
+        min-width: 0;
+        min-height: 0;
+        box-sizing: border-box;
+    }
+
+    #splitter[data-layout="horizontal"] #splitterInfo #world-record {
+        grid-column: 1;
+        grid-row: 1;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    #splitter[data-layout="horizontal"] #splitterInfo #time-container {
+        grid-column: 1;
+        grid-row: 2;
+        min-width: 0;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    #splitter[data-layout="horizontal"] #splitterInfo .comparison-mode {
+        grid-column: 1;
+        grid-row: 3;
+        min-width: 0;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
     }
 }

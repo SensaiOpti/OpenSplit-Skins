@@ -1,0 +1,55 @@
+@layer skins {
+    #gameInfo {
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        padding: calc(var(--splitter-game-info-padding-height) / 2)
+            calc(var(--splitter-game-info-padding-width) / 2);
+
+        box-sizing: border-box;
+
+        background-image:
+            url("./images/thimbo.png"), url("./images/timwave.png"),
+            var(--color-primary);
+
+        background-size:
+            contain,
+            contain,
+            100% 100%;
+
+        background-position: left, 95%, center;
+
+        background-repeat: no-repeat;
+
+        text-align: var(--gameinfo-text-align);
+    }
+
+    #gameTitle {
+        font-size: var(--gameinfo-title-size);
+        font-weight: var(--gameinfo-title-font-weight);
+    }
+
+    #gameCategory {
+        margin: var(--gameinfo-category-margin);
+        padding-bottom: var(--gameinfo-category-bottom-space);
+
+        font-size: var(--gameinfo-category-font-size);
+        font-weight: var(--gameinfo-category-font-weight);
+    }
+
+    .game-variable {
+        /*min-width: var(--splitter-game-variable-min-width);*/
+        /*min-height: var(--splitter-game-variable-min-height);*/
+    }
+
+    #attempts {
+        position: static;
+        right: auto;
+
+        font-size: 14px;
+        font-weight: var(--gameinfo-category-font-weight);
+    }
+}

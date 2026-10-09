@@ -1,78 +1,82 @@
 @layer skins {
-    #gameInfo {
-        position: relative;
-        background-image:
-            url("./images/thimbo.png"), url("./images/timwave.png"),
-            var(--color-primary);
-        background-size:
-            contain,
-            contain,
-            100% 100%;
-        background-position: left, 95%, center;
-        background-repeat: no-repeat;
-        text-align: var(--gameinfo-text-align);
+    /*
+     * ============================================================
+     * Splitter
+     * ============================================================
+     */
+
+    #splitter {
+        min-width: 0;
+        min-height: 0;
     }
 
-    #gameTitle {
-        font-size: var(--gameinfo-title-size);
-        font-weight: var(--gameinfo-title-font-weight);
+    /*
+     * ============================================================
+     * Vertical layout
+     * ============================================================
+     */
+
+    #splitter[data-layout="vertical"] {
+        min-height: 0;
     }
 
-    #gameCategory {
-        margin: var(--gameinfo-category-margin);
-        padding-bottom: var(--gameinfo-category-bottom-space);
+    #splitter[data-layout="vertical"] #splitterInfo {
+        display: flex;
+        flex-direction: column;
 
-        font-size: var(--gameinfo-category-font-size);
-        font-weight: var(--gameinfo-category-font-weight);
+        min-width: 0;
+
+        box-sizing: border-box;
     }
 
-    #splitContainer {
-        background-image: url("./images/jinxtool.png");
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
+    /*
+     * ============================================================
+     * Horizontal layout
+     * ============================================================
+     */
+
+    #splitter[data-layout="horizontal"] #splitterInfo {
+        display: grid;
+
+        min-width: 0;
+        min-height: 0;
+
+        box-sizing: border-box;
     }
 
-    #finalSegment {
-        background: var(--color-primary);
+    #splitter[data-layout="horizontal"] #splitterInfo #world-record {
+        grid-column: 1;
+        grid-row: 1;
+
+        min-width: 0;
+        box-sizing: border-box;
     }
 
-    #splitList table tr.selected {
-        background: var(--active-segment-background);
-        color: var(--active-segment-text-color);
+    #splitter[data-layout="horizontal"] #splitterInfo #time-container {
+        grid-column: 1;
+        grid-row: 2;
+
+        min-width: 0;
+        box-sizing: border-box;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: flex-end;
     }
 
-    #splitList table td {
-        border: var(--segment-border);
-        padding: var(--segment-padding);
-        border-left: 0;
-        border-right: 0;
-    }
+    #splitter[data-layout="horizontal"] #splitterInfo .comparison-mode {
+        grid-column: 1;
+        grid-row: 3;
 
-    #attempts {
-        position: static;
-        right: auto;
-        font-size: 14px;
-        font-weight: var(--gameinfo-category-font-weight);
-    }
+        min-width: 0;
+        box-sizing: border-box;
 
-    .comparison-mode {
-        display: relative;
-    }
+        display: flex;
 
-    .splitDelta {
-        text-align: var(--split-delta-text-align);
-        font-family: var(--split-delta-font-family), monospace;
-    }
+        align-items: center;
+        justify-content: center;
 
-    .splitComparison {
-        text-align: var(--split-comparison-text-align);
-        font-family: var(--split-comparison-font-family), monospace;
+        text-align: center;
     }
-
-    button.collapseToggle {
-        margin-right: 6px;
-        background-color: #282828;
-    }
-
 }

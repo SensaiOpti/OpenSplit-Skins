@@ -1,12 +1,22 @@
 @layer skins {
+    /*
+     * ============================================================
+     * Game information
+     * ============================================================
+     */
+
     #gameInfo {
         position: relative;
+
         background-image: url("./images/metroid.gif"), var(--color-primary);
         background-size:
-        20% auto,
-        100% 100%;
-        background-position: 95%, center;
+            20% auto,
+            100% 100%;
+        background-position:
+            95% center,
+            center;
         background-repeat: no-repeat;
+
         text-align: var(--gameinfo-text-align);
         font-family: var(--split-comparison-font-family), sans-serif;
     }
@@ -20,21 +30,28 @@
     #gameCategory {
         margin: var(--gameinfo-category-margin);
         padding-bottom: var(--gameinfo-category-bottom-space);
+
         font-family: var(--split-comparison-font-family), sans-serif;
         font-size: var(--gameinfo-category-font-size);
         font-weight: var(--gameinfo-category-font-weight);
     }
 
-    #splitContainer {
+    /*
+     * ============================================================
+     * Split list
+     * ============================================================
+     *
+     * The split list owns the segment body/background styling.
+     * The base splitter controls whether the list is vertical or
+     * horizontal.
+     */
+
+    #splitList {
         background-image: url("./images/metroidback.png");
         background-repeat: no-repeat;
         background-position: center bottom;
         background-size: 200%;
-        font-family: var(--split-comparison-font-family), sans-serif;
-    }
 
-    #finalSegment {
-        background: var(--color-primary);
         font-family: var(--split-comparison-font-family), sans-serif;
     }
 
@@ -44,30 +61,142 @@
     }
 
     #splitList table td {
+        border-top: var(--segment-border);
+        border-bottom: var(--segment-border);
+
+        padding: var(--segment-padding);
+    }
+
+    #splitList .splitDelta {
+        text-align: var(--split-delta-text-align);
+        font-family: var(--split-delta-font-family), monospace;
+    }
+
+    #splitList .splitComparison {
+        text-align: var(--split-comparison-text-align);
+        font-family: var(--split-comparison-font-family), monospace;
+    }
+
+    /*
+     * Parent rows use the same segment styling as leaf rows.
+     */
+    #splitList .parentRow {
+        font-family: var(--split-comparison-font-family), sans-serif;
+    }
+
+    #splitList .parentRow td {
         border: var(--segment-border);
         border-left: 0;
         border-right: 0;
+
         padding: var(--segment-padding);
     }
+
+    /*
+     * ============================================================
+     * Final segment
+     * ============================================================
+     */
+
+    #finalSegment {
+        background: var(--color-primary);
+        font-family: var(--split-comparison-font-family), sans-serif;
+    }
+
+    /*
+     * ============================================================
+     * Miscellaneous splitter elements
+     * ============================================================
+     */
 
     #attempts {
         position: static;
     }
 
-    .splitDelta {
-        text-align: var(--split-delta-text-align);
-        font-family: var(--split-delta-font-family), monospace;
-    }
-
-    .splitComparison {
-        text-align: var(--split-comparison-text-align);
-        font-family: var(--split-comparison-font-family), monospace;
-    }
-
     .comparison-mode {
         background-color: #141943;
+
         font-family: var(--split-comparison-font-family), monospace;
+
         opacity: 1;
     }
 
+    /*
+     * ============================================================
+     * Horizontal layout
+     * ============================================================
+     *
+     * The base splitter converts each segment row into a column.
+     * These rules only preserve the skin's visual treatment when
+     * that happens.
+     */
+
+    #splitter[data-layout="horizontal"] #splitList {
+        background-position: center bottom;
+        background-size: cover;
+    }
+
+    #splitter[data-layout="horizontal"] #splitList table td {
+        border-left: 0;
+        border-right: 0;
+    }
+
+    #splitter[data-layout="horizontal"] #splitList .splitDelta,
+    #splitter[data-layout="horizontal"] #splitList .splitComparison {
+        text-align: center;
+    }
+
+    #splitter[data-layout="horizontal"] #finalSegment {
+        font-family: var(--split-comparison-font-family), sans-serif;
+    }
+
+    /*
+     * ============================================================
+     * Horizontal splitter info
+     * ============================================================
+     */
+
+    /* Match the measured component layout in vertical view. */
+    #splitter[data-layout="vertical"] #splitterInfo {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    /* Keep horizontal splitter info in a single measured grid column. */
+    #splitter[data-layout="horizontal"] #splitterInfo {
+        display: grid;
+        min-width: 0;
+        min-height: 0;
+        box-sizing: border-box;
+    }
+
+    #splitter[data-layout="horizontal"] #splitterInfo #world-record {
+        grid-column: 1;
+        grid-row: 1;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    #splitter[data-layout="horizontal"] #splitterInfo #time-container {
+        grid-column: 1;
+        grid-row: 2;
+        min-width: 0;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    #splitter[data-layout="horizontal"] #splitterInfo .comparison-mode {
+        grid-column: 1;
+        grid-row: 3;
+        min-width: 0;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
 }
